@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block title %} 
+    {{ parent() }} 
+    Inscription 
+{% endblock %}
+{% block contenu %} 
+    {% if form.valide is defined %}
+        {% if form.valide == true %}
+            <h1 class='text-center'>Inscription réussie</h1>
+            <h2 class='text-center'>Voici votre identifiant : {{form.email}}</h2>
+            {% if form.role == 1 %}
+                <h1 class='text-center'>Vous êtes administrateur du site</h1>
+            {% else %}
+                <h1 class='text-center'>Vous êtes un client du site </h1>
+            {% endif %}
+            {% else %}
+                <h1 class='text-center'> Echec de l'Inscription</h1>
+                <h2>Erreur: {{ form.message}}</h2>
+                <a href="index.php?page=inscrire"> Retourner sur la page d'acceuil </a>
+            {% endif %}
+        {% else %}
+        <div class="container-fluid p-4">
+        
+            <div class="row justify-content-center">
+
+                <div class="col-6 text-center">
+
+                    <form action="index.php?page=inscrire" method="post" enctype="application/x-www-form-urlencoded">
+
+                        <h1>Inscrivez-vous sur SHOP-SHOP</h1>
+
+                        <label for="inputEmail" class="sr-only">Email:</label>
+                        <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                        <label for="inputPassword" class="sr-only">Mot de passe:</label>
+                        <input type="password" id="inputPassword" name="inputPassword" class="form-control"placeholder="Mot de passe" required>
+                        <label for="inputPassword2" class="sr-only">Mot de passe:</label>
+                        <input type="password" id="inputPassword2" name="inputPassword2" class="form-control"placeholder="Confirmation mot de passe" required>
+                        <label for="inputNom" class="sr-only">Nom:</label>
+                        <input type="Nom" id="inputNom" name="inputNom" class="form-control"placeholder="Nom" required>
+                        <label for="inputPrenom" class="sr-only">Prenom:</label>
+                        <input type="Nom" id="inputPrenom" name="inputPrenom" class="form-control"placeholder="Prenom" required>
+                        
+                        <select class="form-control" name="role">
+                            <option value="1">Administrateur</option>
+                            <option value="2">Client</option>
+                        </select>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit"name="btInscrire">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+</form>
+{% endblock %}

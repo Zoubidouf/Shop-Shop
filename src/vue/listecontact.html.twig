@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Contact {% endblock %}
+
+{% block contenu %} 
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for p in list %}
+
+<td>{{p.Nom}}</td><td>{{p.Email}}</td><td>{{p.Message}}</td></tr>
+{% endfor %}
+        </tbody>
+    </table>
+ </div>
+ <form action="index.php?page=listecontact" method="post" enctype="application/x-www-form-urlencoded">
+
+                        <label for="Nom" class="sr-only">Nom</label>
+                            <input type="text" id="Nom" name="Nom" class="form-control" placeholder="Nom" required autofocus>
+                        <label for="Email" class="sr-only">Email</label>
+                            <input type="Email" id="Email" name="Email" class="form-control" placeholder="Email" required>
+                        <label for="Message" class="sr-only">Message :</label>
+                        <textarea id="Message" name="Message" class="form-control" placeholder="Message" required></textarea>
+                        </select>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjouter3">Ajouter un Contact</button>
+
+                    </form> 
+ {% endblock %}

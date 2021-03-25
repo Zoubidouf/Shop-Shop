@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title %} 
+    {{ parent() }} 
+    Contact
+{% endblock %}
+   
+{% block contenu %} 
+ {% if form.valide is defined %}
+        {% if form.valide == true %}    
+        <h1>Voici votre identifiant : {{form.Email}}</h1>
+        <h1>Voici votre Nom : {{form.Nom}}</h1>
+        <h1>Voici votre Message : {{form.Message}}</h1>
+        {% endif %}
+{% else %}
+    <div class="container-fluid p-4">
+        
+            <div class="row justify-content-center">
+
+                <div class="col-6 text-center">
+
+                    <form action="index.php?page=contact" method="post" enctype="application/x-www-form-urlencoded">
+                            <h1> Bienvenue sur SHOP- SHOP la page Contact</h1> 
+                        <label for="inputNom" class="sr-only">Nom:</label>
+                        <input type="Nom" id="inputNom" name="inputNom" class="form-control"placeholder="Nom" required>
+                        <label for="inputEmail" class="sr-only">Email:</label>
+                        <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required >
+                        <div class="form-group">
+                            <label for="inputMessage">Message</label>
+                            <textarea name="inputMessage" class="form-control" id="inputMessage" rows="3"></textarea>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit"name="btSumit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endif %}
+{% endblock %}
